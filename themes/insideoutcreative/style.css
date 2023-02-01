@@ -11,6 +11,17 @@ Theme Author URI: https://insideoutcreative.com/
     --secondary: #0f2849;
 }
 
-.logged-in header {
+.logged-in header.position-fixed,
+.logged-in .blank-space,
+.logged-in .bg-clip-path {
     margin-top: 32px;
+}
+
+@media only screen and (max-width:767px) {
+
+    .logged-in header.position-fixed,
+    .logged-in .blank-space,
+    .logged-in .bg-clip-path {
+        margin-top: 45px;
+    }
 }

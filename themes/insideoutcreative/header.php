@@ -20,8 +20,19 @@ wp_head();
 <body <?php body_class(); ?>>
 <?php
 if(get_field('body','options')) { the_field('body','options'); }
-echo '<div class="blank-space"></div>';
-echo '<header class="position-relative pt-3 pb-3 z-3 box-shadow bg-white w-100" style="top:0;left:0;">';
+echo '<div class="blank-space position-fixed w-100 z-9" style="top:0;left:0;background:#363636;mix-blend-mode:multiply;opacity:.55;"></div>';
+echo '<div class="bg-clip-path position-fixed w-25 z-8" style="
+background:#c19b30;
+top:0;
+right:0;
+mix-blend-mode:overlay;
+clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+-ms-clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+-webkit-clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+-moz-clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+-o-clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+"></div>';
+echo '<header class="position-fixed pt-3 pb-3 z-10 w-100" style="top:0;left:0;">';
 
 echo '<div class="nav">';
 echo '<div class="container">';

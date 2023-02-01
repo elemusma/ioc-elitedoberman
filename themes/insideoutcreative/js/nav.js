@@ -5,16 +5,21 @@ let navMenuOverlay = document.querySelector('#navMenuOverlay');
 let navMenuClose = document.querySelector('#navMenuClose');
 let header = document.querySelector('header');
 let blankSpace = document.querySelector('.blank-space');
+let bgClipPath = document.querySelector('.bg-clip-path');
 
 let logoMain = document.querySelector('#logo-main')
 let logoSecondary = document.querySelector('#logo-secondary')
 
 window.addEventListener("scroll", parallaxEffect);
 
+blankSpace.style.height = header.offsetHeight + "px";
+bgClipPath.style.height = header.offsetHeight + "px";
+
 function parallaxEffect() {
     blankSpace.style.height = header.offsetHeight + "px";
-    header.classList.add('position-fixed');
-    header.classList.remove('position-relative');
+    bgClipPath.style.height = header.offsetHeight + "px";
+    // header.classList.add('position-fixed');
+    // header.classList.remove('position-relative');
 
     if (scrollY < 299) {
         logoMain.style.width = "205px"
