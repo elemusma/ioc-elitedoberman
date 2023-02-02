@@ -22,9 +22,9 @@ function parallaxEffect() {
     // header.classList.remove('position-relative');
 
     if (scrollY < 299) {
-        logoMain.style.width = "205px"
+        logoMain.style.width = "305px"
     } else if (scrollY > 300) {
-        logoMain.style.width = "105px"
+        logoMain.style.width = "205px"
     }
 }
 

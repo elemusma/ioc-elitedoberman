@@ -80,3 +80,10 @@ strong {
 blockquote {
   font-size: 90%;
 }
+
+.coromant-garamond {
+  font-family: cormorant-garamond, serif;
+  font-weight: 400;
+}
+
+/* font-family: cormorant-garamond, serif; */

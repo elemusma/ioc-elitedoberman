@@ -279,6 +279,32 @@ class GF_Field_Consent extends GF_Field {
 	}
 
 	/**
+	 * If a field has a description, the aria-describedby attribute for the input field is returned.
+	 * This method is specific to the consent field since the consent description has a different ID pattern.
+	 *
+	 * @since 2.6.8
+	 *
+	 * @param array|string $extra_ids Any extra ids that should be added to the describedby attribute.
+	 *
+	 * @return string
+	 */
+	public function get_aria_describedby( $extra_ids = array() ) {
+
+		$describedby_ids = is_array( $extra_ids ) ? $extra_ids : explode( ' ', $extra_ids );
+
+		if ( $this->failed_validation ) {
+			$describedby_ids[] = "validation_message_{$this->formId}_{$this->id}";
+		}
+
+		if ( empty( $describedby_ids ) ) {
+			return '';
+		}
+
+		return 'aria-describedby="' . implode( ' ', $describedby_ids ) . '"';
+
+	}
+
+	/**
 	 * Return the result (bool) by setting $this->failed_validation.
 	 * Return the validation message (string) by setting $this->validation_message.
 	 *
@@ -564,24 +590,6 @@ class GF_Field_Consent extends GF_Field {
 		}
 
 		return $value;
-	}
-
-	/**
-	 * Get field label class.
-	 *
-	 * @since unknown
-	 * @since 2.5     Added `screen-reader-text` if the label hasn't been set; added `gfield_label_before_complex` if the field has inputs.
-	 * @since 2.5.13  Added `gform_consent_field` class to differentiate the required indicator placement when label is hidden.
-	 *
-	 * @return string
-	 */
-	public function get_field_label_class() {
-
-		$class = parent::get_field_label_class();
-
-		$class .= ' gform_consent_field';
-
-		return $class;
 	}
 
 }
