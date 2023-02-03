@@ -111,11 +111,11 @@ if(have_rows('text_columns')): while(have_rows('text_columns')): the_row();
         echo '</div>';
 
         if(have_rows('icons_inner')):
-        echo '<div class="row row-content justify-content-between">';
+        echo '<div class="row row-content justify-content-center">';
             while(have_rows('icons_inner')): the_row();
             $icon = get_sub_field('icon');
             echo '<div class="col-lg-4 col-6 text-center mb-5">';
-            echo '<div class="border-hover d-flex align-items-center justify-content-center ml-auto mr-auto mb-4" style="border-radius:50%;height:105px;width:105px;border:1px solid var(--accent-quinary);">';
+            echo '<div class="border-hover d-flex align-items-center justify-content-center ml-auto mr-auto mb-4" style="border-radius:50%;height:105px;width:105px;border:1px solid var(--accent-primary);">';
             echo wp_get_attachment_image($icon['id'],'full','',['class'=>'','style'=>'height:70px;width:70px;object-fit:contain;']);
             echo '</div>';
                 
@@ -132,14 +132,18 @@ if(have_rows('text_columns')): while(have_rows('text_columns')): the_row();
     endwhile; endif;
 } elseif($layout == 'Testimonials'){
     if(have_rows('testimonials')): while(have_rows('testimonials')): the_row();
-    echo '<section class="position-relative bg-accent-quinary" style="padding:150px 0;">';
+    echo '<section class="position-relative bg-accent-quinary" style="padding:250px 0;">';
 
-    echo wp_get_attachment_image(173,'full','',['class'=>'w-100 position-absolute','style'=>'height:80%;top:10%;left:0;mix-blend-mode:multiply;']);
+    // echo wp_get_attachment_image(173,'full','',['class'=>'w-100 position-absolute','style'=>'height:80%;top:10%;left:0;mix-blend-mode:multiply;']);
+
+    echo '<img src="https://insideoutcreative.io/wp-content/uploads/2023/02/Old-Paper-Background.jpg" class="w-100 position-absolute" style="height:70%;top:15%;left:0;mix-blend-mode:multiply;" alt="">';
+    echo '<img src="https://insideoutcreative.io/wp-content/uploads/2023/02/Quotes-Icon-Gold.png" class="h-auto z-1 img-quote position-absolute" style="width:100px;object-fit:contain;top:7.5%;left:50%;transform:translate(-50%,0);" alt="">';
     
     echo '<div class="container">';
     echo '<div class="row">';
     echo '<div class="col-12 text-center pb-5">';
-    echo wp_get_attachment_image(218,'full','',['class'=>'h-100 z-1 img-quote','style'=>'object-fit:contain;']);
+    // echo wp_get_attachment_image(218,'full','',['class'=>'h-100 z-1 img-quote','style'=>'object-fit:contain;']);
+
 
     echo get_sub_field('content');
 
@@ -153,7 +157,7 @@ if(have_rows('text_columns')): while(have_rows('text_columns')): the_row();
 
 
                 echo '<div class="text-center col-lg-6 ml-auto mr-auto">';
-                echo '<div class="pb-4 text-white" style="font-size:125%;">';
+                echo '<div class="pb-4 text-accent" style="font-size:125%;">';
                 echo get_sub_field('content');
                 echo '</div>';
 
@@ -161,7 +165,7 @@ if(have_rows('text_columns')): while(have_rows('text_columns')): the_row();
                 echo wp_get_attachment_image($headshot['id'],'full','',['class'=>'ml-auto mr-auto','style'=>'width:100px;height:100px;object-fit:cover;border-radius:50%;']);
 
                 echo '<span class="d-block h5 cormorant pt-4">' . get_sub_field('name') . '</span>';
-                echo '<span class="d-block text-white">' . get_sub_field('title') . '</span>';
+                echo '<span class="d-block text-accent">' . get_sub_field('title') . '</span>';
                 
                 echo '</div>';
 
@@ -175,16 +179,18 @@ if(have_rows('text_columns')): while(have_rows('text_columns')): the_row();
     endwhile; endif;
 } elseif($layout == 'Contact'){
     if(have_rows('contact')): while(have_rows('contact')): the_row();
-        echo '<section class="position-relative bg-accent-quinary" style="padding-top:500px;padding-bottom:100px;">';
+        echo '<section class="position-relative bg-accent-quinary" style="padding-top:500px;padding-bottom:50px;">';
 
         $bgImg = get_sub_field('background_image');
-        echo wp_get_attachment_image($bgImg['id'],'full','',['class'=>'position-absolute w-100','style'=>'height:80%;top:0;left:0;object-fit:cover;']);
+        echo wp_get_attachment_image($bgImg['id'],'full','',['class'=>'position-absolute w-100 h-100','style'=>'top:0;left:0;object-fit:cover;']);
 
         echo '<div class="container">';
         echo '<div class="row justify-content-center">';
         echo '<div class="col-lg-9 text-center">';
         echo '<div class="position-relative p-5" style="">';
-        echo wp_get_attachment_image(173,'full','',['class'=>'position-absolute w-100 h-100','style'=>'top:0;left:0;opacity:.71;object-fit:cover;']);
+        echo '<img src="https://insideoutcreative.io/wp-content/uploads/2023/02/Old-Paper-Bg.jpg" alt="" class="position-absolute w-100 h-100" style="top:0;left:0;opacity:.71;object-fit:cover;">';
+
+        // echo wp_get_attachment_image(173,'full','',['class'=>'position-absolute w-100 h-100','style'=>'top:0;left:0;opacity:.71;object-fit:cover;']);
 
         echo '<div class="position-relative">';
         echo get_sub_field('content');

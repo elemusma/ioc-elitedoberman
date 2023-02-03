@@ -81,9 +81,14 @@ blockquote {
   font-size: 90%;
 }
 
-.coromant-garamond {
+.coromant-garamond,
+h2 {
   font-family: cormorant-garamond, serif;
   font-weight: 400;
+}
+
+h2 {
+  font-size: 4rem;
 }
 
 /* font-family: cormorant-garamond, serif; */

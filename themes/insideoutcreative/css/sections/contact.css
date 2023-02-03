@@ -7,7 +7,7 @@ input.gform_button.button {
   transition: all 0.25s ease-in-out;
   max-width: 250px;
   width: 100%;
-  margin: auto;
+  margin: 0;
   cursor: pointer;
   color: white;
   box-shadow: none !important;
@@ -18,15 +18,15 @@ input.gform_button.button:hover {
   border-color: var(--accent-secondary);
 }
 
-.gform_footer.top_label {
+/* .gform_footer.top_label {
   margin-bottom: -90px !important;
-}
+} */
 
-input,
+/* input,
 textarea {
   box-shadow: inset 1px 1px 8px #eaeaea !important;
   border: none;
-}
+} */
 
 input[type=file] {
   box-shadow: none !important;
@@ -35,11 +35,9 @@ input[type=file] {
 /* custom form */
 input,
 textarea {
-  width: 100%;
-  border: 1px solid #eaeaea;
-  box-shadow: inset 1px 1px 5px rgba(0, 0, 0, .5);
-  padding: 5px 15px;
-  outline-color: var(--accent-primary);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #988f8a;
 }
 
 label {

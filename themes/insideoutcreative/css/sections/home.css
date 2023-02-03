@@ -1,0 +1,10 @@
+/* start of icons */
+.border-hover {
+    transition: all .25s ease-in-out;
+}
+
+.border-hover:hover {
+    background: var(--accent-primary);
+}
+
+/* end of icons */
