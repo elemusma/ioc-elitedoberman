@@ -2,6 +2,7 @@
   --accent-primary: #d5aa3d;
   --accent-secondary: #182236;
   --accent-tertiary: #a49c86;
+  --accent-quaternary: #2c281d;
 }
 
 html {
@@ -39,6 +40,22 @@ a.bg-accent:hover {
 }
 
 a.bg-accent-secondary:hover {
+  background: var(--accent-primary);
+}
+
+.bg-accent-tertiary {
+  background: var(--accent-tertiary);
+}
+
+a.bg-accent-tertiary:hover {
+  background: var(--accent-primary);
+}
+
+.bg-accent-quaternary {
+  background: var(--accent-quaternary);
+}
+
+a.bg-accent-quaternary:hover {
   background: var(--accent-primary);
 }
 

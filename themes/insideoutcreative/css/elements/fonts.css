@@ -81,6 +81,26 @@ blockquote {
   font-size: 90%;
 }
 
+.arrows li {
+  position: relative;
+  list-style: none;
+  color: #a4a3a3;
+  font-style: italic;
+  font-family: "proxima_novabold";
+}
+
+.arrows li:before {
+  content: "";
+  background: url(https://insideoutcreative.io/wp-content/uploads/2023/02/Arrow-Right-Gold.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 5px;
+  left: -30px;
+}
+
 .coromant-garamond,
 h2 {
   font-family: cormorant-garamond, serif;

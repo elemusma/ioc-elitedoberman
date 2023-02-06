@@ -4,17 +4,19 @@ $layout = get_sub_field('layout');
 
 if($layout == 'Content + Image'){
     if(have_rows('content_image')): while(have_rows('content_image')): the_row();
-    $bgImg = get_sub_field('background_image');
-        $style = get_sub_field('style');
-        $classes = get_sub_field('classes');
         $content = get_sub_field('content');
         $img = get_sub_field('image');
-        if($bgImg){
-            echo '<section class="position-relative content-section bg-accent-secondary text-accent-quinary ' . $classes . '" style="background:url(' . wp_get_attachment_image_url($bgImg['id'],'full') . ');background-size:cover;padding:150px 0;' . $style . '" id="' . get_sub_field('id') . '">';
-            // echo '</section>';
-        } else {
-            echo '<section class="position-relative content-section bg-accent-secondary text-accent-quinary ' . $classes . '" style="padding:150px 0;' . $style . '" id="' . get_sub_field('id') . '">';
-        }
+
+        echo '<section class="position-relative content-section ' . get_sub_field('classes') . '" style="padding:150px 0;' . get_sub_field('style') . '" id="' . get_sub_field('id') . '">';
+
+            $bgImg = get_sub_field('background_image');
+
+            if($bgImg){
+                echo wp_get_attachment_image($bgImg['id'],'full','',[
+                    'class'=>'w-100 h-100 position-absolute',
+                    'style'=>'top:0;left:0;object-fit:cover;'
+                ]);
+            }
 
         echo '<div class="container">';
         echo '<div class="row row-content align-items-center justify-content-between">';
@@ -37,15 +39,18 @@ if($layout == 'Content + Image'){
 } elseif($layout == 'Text Columns'){
 
 if(have_rows('text_columns')): while(have_rows('text_columns')): the_row();
+
+    echo '<section class="position-relative content-section ' . get_sub_field('classes') . '" style="padding:150px 0;' . get_sub_field('style') . '" id="' . get_sub_field('id') . '">';
+
+    echo '<img src="https://insideoutcreative.io/wp-content/uploads/2023/02/Old-Paper-Background.jpg" class="w-100 h-100 position-absolute" style="top:0;left:0;object-fit:cover;" alt="">';
+
     $bgImg = get_sub_field('background_image');
-    $style = get_sub_field('style');
-    $classes = get_sub_field('classes');
 
     if($bgImg){
-        echo '<section class="position-relative content-section bg-accent-quaternary ' . $classes . '" style="background:url(' . wp_get_attachment_image_url($bgImg['id'],'full') . ');background-size:cover;padding:150px 0;' . $style . '">';
-        // echo '</section>';
-    } else {
-        echo '<section class="position-relative content-section bg-accent-quaternary ' . $classes . '" style="padding:150px 0;' . $style . '">';
+        echo wp_get_attachment_image($bgImg['id'],'full','',[
+            'class'=>'w-100 h-100 position-absolute',
+            'style'=>'top:0;left:0;object-fit:cover;'
+        ]);
     }
 
     echo '<div class="container">';
@@ -53,14 +58,14 @@ if(have_rows('text_columns')): while(have_rows('text_columns')): the_row();
 
     if(have_rows('columns')): while(have_rows('columns')): the_row();
     echo '<div class="col-lg-3 col-md-6 text-center pt-lg-0 pb-lg-0 position-relative" style="padding-top:100px;padding-bottom:100px;">';
-    echo '<span class="position-absolute h1 mb-0 text-columns-big-title" style="
-    opacity: .5;
+    echo '<span class="position-absolute h1 mb-0 text-columns-big-title coromant-garamond" style="
+    opacity: .29;
     top: -50%;
     left: 50%;
-    transform: translate(-60%,-50%);
+    transform: translate(-60%,-40%);
     font-size: 180px;
-    color:#a49c86;
-    mix-blend-mode:multiply;">' . get_sub_field('big_title') . '</span>';
+    color:var(--accent-primary);
+    ">' . get_sub_field('big_title') . '</span>';
 
     echo '<span class="" style="color:var(--accent-septenary);letter-spacing:0.5em;">' . get_sub_field('small_title') . '</span>';
 
@@ -75,7 +80,17 @@ if(have_rows('text_columns')): while(have_rows('text_columns')): the_row();
     endwhile; endif;
 } elseif($layout == 'Content'){
     if(have_rows('content')): while(have_rows('content')): the_row();
-    echo '<section class="position-relative text-white bg-accent-quaternary" style="padding:100px 0;">';
+    echo '<section class="position-relative content-section ' . get_sub_field('classes') . '" style="padding:150px 0;' . get_sub_field('style') . '" id="' . get_sub_field('id') . '">';
+
+    $bgImg = get_sub_field('background_image');
+
+    if($bgImg){
+        echo wp_get_attachment_image($bgImg['id'],'full','',[
+            'class'=>'w-100 h-100 position-absolute',
+            'style'=>'top:0;left:0;object-fit:cover;'
+        ]);
+    }
+
     echo '<div class="container-fluid">';
     echo '<div class="row justify-content-center">';
 
@@ -130,6 +145,49 @@ if(have_rows('text_columns')): while(have_rows('text_columns')): the_row();
 
         echo '</section>';
     endwhile; endif;
+} elseif ($layout == 'Gallery'){
+if(have_rows('gallery_group')): while(have_rows('gallery_group')): the_row();
+
+echo '<section class="position-relative content-section ' . get_sub_field('classes') . '" style="padding:150px 0;' . get_sub_field('style') . '" id="' . get_sub_field('id') . '">';
+
+$bgImg = get_sub_field('background_image');
+
+if($bgImg){
+    echo wp_get_attachment_image($bgImg['id'],'full','',[
+        'class'=>'w-100 h-100 position-absolute',
+        'style'=>'top:0;left:0;object-fit:cover;'
+    ]);
+}
+
+echo '<div class="container">';
+    echo '<div class="row">';
+        echo '<div class="col-12 text-center">';
+
+        echo get_sub_field('content');
+
+        echo '</div>';
+
+        $gallery = get_sub_field('gallery');
+    if( $gallery ): 
+        foreach( $gallery as $image ):
+        echo '<div class="col-lg-3 col-md-4 col-6 col col-portfolio mt-3 mb-3 overflow-h">';
+        echo '<div class="img-hover overflow-h">';
+        echo '<a href="' . wp_get_attachment_image_url($image['id'], 'full') . '" data-lightbox="image-set">';
+        echo wp_get_attachment_image($image['id'], 'full','',['class'=>'w-100 img-portfolio','style'=>'height:300px;object-fit:cover;'] );
+        echo '</a>';
+        echo '</div>';
+        echo '</div>';
+        endforeach; 
+    endif;
+
+    echo '</div>';
+echo '</div>';
+echo '</section>';
+
+endwhile; endif;
+
+
+
 } elseif($layout == 'Testimonials'){
     if(have_rows('testimonials')): while(have_rows('testimonials')): the_row();
     echo '<section class="position-relative bg-accent-quinary" style="padding:250px 0;">';
