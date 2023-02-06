@@ -11,16 +11,17 @@
     color: white;
 }
 
-.btn-main {
-    background: var(--accent-primary);
-    padding: 10px 25px;
+.btn-main .bg-accent-light {
+    /* background: var(--accent-primary);
+    padding: 10px 25px; */
     transition: all .25s ease-in-out;
-    display: inline-block;
+    /* display: inline-block;
     text-decoration: none;
-    color: white;
+    color: white; */
 }
 
-.btn-main:hover {
-    background: var(--accent-secondary);
+.btn-main:hover .bg-accent-light {
+    background: var(--accent-quaternary);
+    color: white;
     text-decoration: none;
 }

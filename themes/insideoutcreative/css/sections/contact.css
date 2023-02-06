@@ -14,8 +14,8 @@ input.gform_button.button {
 }
 
 input.gform_button.button:hover {
-  background-color: var(--accent-secondary);
-  border-color: var(--accent-secondary);
+  background-color: var(--accent-quaternary);
+  border-color: var(--accent-quaternary);
 }
 
 /* .gform_footer.top_label {

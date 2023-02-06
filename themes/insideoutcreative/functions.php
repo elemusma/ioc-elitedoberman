@@ -14,13 +14,13 @@ wp_enqueue_style('img', get_theme_file_uri('/css/elements/img.css'));
 // if(is_front_page()){
 	wp_enqueue_style('home', get_theme_file_uri('/css/sections/home.css'));
 // }
-if(is_page_template('templates/about.php')){
-	wp_enqueue_style('about-custom', get_theme_file_uri('/css/sections/about.css'));
-	wp_enqueue_style('intro', get_theme_file_uri('/css/sections/intro.css'));
-}
-if( is_page_template('templates/content-page.php' ) ){
-	wp_enqueue_style('content-page', get_theme_file_uri('/css/sections/content-page.css'));
-}
+// if(is_page_template('templates/about.php')){
+// 	wp_enqueue_style('about-custom', get_theme_file_uri('/css/sections/about.css'));
+// 	wp_enqueue_style('intro', get_theme_file_uri('/css/sections/intro.css'));
+// }
+// if( is_page_template('templates/content-page.php' ) ){
+// 	wp_enqueue_style('content-page', get_theme_file_uri('/css/sections/content-page.css'));
+// }
 if(is_single() || is_page_template('templates/blog.php') || is_archive() || is_category() || is_tag() || is_404() ) {
 wp_enqueue_style('blog', get_theme_file_uri('/css/sections/blog.css'));
 }
@@ -180,8 +180,18 @@ function btn_shortcode( $atts, $content = null ) {
 	), $atts );
 	
 	// return '<a class="btn-accent-primary" href="' . esc_attr($a['href']) . '" target="' . esc_attr($a['target']) . '">' . $content . '</a>';
+
+	$button = "";
+
+	$button .= '<a class="btn-main d-inline-block ls-2 small pt-1 pb-1 pl-2 pr-2 ' . esc_attr($a['class']) . '" href="' . esc_attr($a['href']) . '" style="transition:all .25s ease-in-out;border:1px solid var(--accent-quaternary);' . esc_attr($a['style']) . '" target="' . esc_attr($a['target']) . '">';
+
+	$button .= '<span class="pt-1 pb-1 pl-5 pr-5 d-inline-block bg-accent-light text-accent-quaternary" style="border:1px solid var(--accent-quaternary);">';
+	$button .= $content;
+	$button .= '</span>';
+	$button .= '</a>';
 	
-	return '<a class="btn-main ' . esc_attr($a['class']) . '" href="' . esc_attr($a['href']) . '" style="' . esc_attr($a['style']) . '" target="' . esc_attr($a['target']) . '">' . $content . '</a>';
+	return $button;
+	// return '<a class="btn-main ' . esc_attr($a['class']) . '" href="' . esc_attr($a['href']) . '" style="' . esc_attr($a['style']) . '" target="' . esc_attr($a['target']) . '">' . $content . '</a>';
 	
 	// [button href="#" class="btn-main" style=""]Learn More[/button]
 	

@@ -19,6 +19,10 @@ a {
   color: var(--accent-tertiary);
 }
 
+.text-accent-quaternary {
+  color: var(--accent-quaternary);
+}
+
 .text-accent {
   color: var(--accent-primary);
 }

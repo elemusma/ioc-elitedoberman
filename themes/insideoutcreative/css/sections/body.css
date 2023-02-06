@@ -1,5 +1,6 @@
 :root {
   --accent-primary: #d5aa3d;
+  --accent-primary-light: #fbcf02;
   --accent-primary-dark: #c19b30;
   --accent-secondary: #182236;
   --accent-tertiary: #a49c86;
@@ -31,6 +32,10 @@ body.nav-open {
 
 .bg-accent {
   background: var(--accent-primary);
+}
+
+.bg-accent-light {
+  background: var(--accent-primary-light);
 }
 
 .bg-accent-dark {
