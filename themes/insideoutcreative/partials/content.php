@@ -2,10 +2,78 @@
 if(have_rows('builder')): while(have_rows('builder')): the_row();
 $layout = get_sub_field('layout');
 
-if($layout == 'Content + Image'){
+if ($layout == 'Intro with Three Images'){
+
+if(have_rows('intro_with_three_images_clone')): while(have_rows('intro_with_three_images_clone')): the_row();
+
+
+
+if(have_rows('intro_with_three_images_group')): while(have_rows('intro_with_three_images_group')): the_row();
+
+
+// if(have_rows('intro_with_three_images_group')): while(have_rows('intro_with_three_images_group')): the_row();
+
+
+
+echo '<section class="position-relative content-section ' . get_sub_field('classes') . '" style="' . get_sub_field('style') . '" id="' . get_sub_field('id') . '">';
+
+$bgImg = get_sub_field('background_image');
+
+if($bgImg){
+    echo wp_get_attachment_image($bgImg['id'],'full','',[
+        'class'=>'w-100 h-100 position-absolute',
+        'style'=>'top:0;left:0;object-fit:cover;'
+    ]);
+}
+
+if(have_rows('columns_repeater')):
+
+
+
+echo '<div class="container-fluid">';
+    echo '<div class="row">';
+    $columnsRepeater = 0;
+    while(have_rows('columns_repeater')): the_row();
+    $columnsRepeater++;
+
+
+        echo '<div class="col-lg-4 col-md-6 p-0 text-center bg-accent">';
+
+        echo '<div class="pt-3 pb-3 pl-2 pr-2">';
+        echo '<span class="h2 font-italic text-white bold" style="text-decoration:underline;">' . get_sub_field('title') . '</span>';
+        echo '</div>';
+
+            $img = get_sub_field('image');
+            echo '<div class="position-relative">';
+
+
+        if($columnsRepeater != 1){
+            echo '<div class="bg-black h-100 position-absolute" style="top:0;left:-2.5px;width:5px;"></div>';
+        }
+
+            // echo '<a href="' . wp_get_attachment_image_url($img['id'], 'full') . '" data-lightbox="intro-img-set" data-title="' . $img['title'] . '">';
+            echo wp_get_attachment_image($img['id'],'full','',['class'=>'w-100','style'=>'height:250px;']);
+            // echo '</a>';
+            echo '</div>';
+        echo '</div>';
+    endwhile;
+    echo '</div>';
+echo '</div>';
+endif;
+
+echo '</section>';
+
+// endwhile; endif;
+
+endwhile; endif;
+
+endwhile; endif;
+
+} elseif($layout == 'Content + Image'){
     if(have_rows('content_image')): while(have_rows('content_image')): the_row();
         $content = get_sub_field('content');
         $img = get_sub_field('image');
+        $imgSide = get_sub_field('image_side');
 
         echo '<section class="position-relative content-section ' . get_sub_field('classes') . '" style="padding:150px 0;' . get_sub_field('style') . '" id="' . get_sub_field('id') . '">';
 
@@ -19,16 +87,24 @@ if($layout == 'Content + Image'){
             }
 
         echo '<div class="container">';
-        echo '<div class="row row-content align-items-center justify-content-between">';
-        echo '<div class="col-lg-4">';
-            echo $content;
-        echo '</div>';
+
+        if($imgSide == 'Left'){
+            echo '<div class="row row-content align-items-center justify-content-between">';
+            // echo '</div>';
+        } else {
+            echo '<div class="row row-content flex-lg-row-reverse align-items-center justify-content-between">';
+
+        }
 
         if($img):
         echo '<div class="col-lg-6 pt-lg-0 pt-5">';
             echo wp_get_attachment_image($img['id'],'full','',['class'=>'w-100 h-100','style'=>'object-fit:cover;']);
         echo '</div>';
         endif;
+
+        echo '<div class="col-lg-4 pt-lg-0 pt-5">';
+        echo $content;
+        echo '</div>';
 
         echo '</div>';
         echo '</div>';
@@ -201,12 +277,6 @@ endwhile; endif;
             'style'=>'top:0;left:0;object-fit:cover;'
         ]);
     }
-
-    // echo '<div class="position-absolute w-100 h-100" style="background: rgb(255,255,255);
-    // background: radial-gradient(circle, rgba(255,255,255,0.5) 30%, rgba(255,255,255,1) 100%);top:0;left:0;"></div>';
-    // echo '<div class="position-absolute w-100 h-100" style="background:#ff0000;mix-blend-mode:multiply;top:0;left:0;"></div>';
-    // echo '<div class="position-absolute w-100 h-100" style="background:#900004;top:0;left:0;mix-blend-mode:multiply;"></div>';
-    // echo '<div class="position-absolute" style="width:90%;height:90%;top:5%;left:5%;background:#0f2849;mix-blend-mode:screen;opacity:.62;"></div>';
 
     echo '<div class="container">';
     echo '<div class="row">';

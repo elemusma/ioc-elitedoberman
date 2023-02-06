@@ -40,10 +40,8 @@ textarea {
   border-bottom: 1px solid #988f8a;
 }
 
-label {
-  font-weight: 700;
-  font-size: 90%;
-  margin-top: 15px;
+label.gfield_label {
+  color: white;
 }
 
 button[type=submit] {
