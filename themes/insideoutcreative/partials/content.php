@@ -186,7 +186,113 @@ echo '</section>';
 
 endwhile; endif;
 
+} elseif($layout == 'Process'){
 
+    if(have_rows('process_clone')): while(have_rows('process_clone')): the_row();
+    if(have_rows('process_group')): while(have_rows('process_group')): the_row();
+
+    echo '<section class="position-relative content-section ' . get_sub_field('classes') . '" style="padding:75px 0;' . get_sub_field('style') . '" id="' . get_sub_field('id') . '">';
+
+    $bgImg = get_sub_field('background_image');
+
+    if($bgImg){
+        echo wp_get_attachment_image($bgImg['id'],'full','',[
+            'class'=>'w-100 h-100 position-absolute',
+            'style'=>'top:0;left:0;object-fit:cover;'
+        ]);
+    }
+
+    // echo '<div class="position-absolute w-100 h-100" style="background: rgb(255,255,255);
+    // background: radial-gradient(circle, rgba(255,255,255,0.5) 30%, rgba(255,255,255,1) 100%);top:0;left:0;"></div>';
+    // echo '<div class="position-absolute w-100 h-100" style="background:#ff0000;mix-blend-mode:multiply;top:0;left:0;"></div>';
+    // echo '<div class="position-absolute w-100 h-100" style="background:#900004;top:0;left:0;mix-blend-mode:multiply;"></div>';
+    // echo '<div class="position-absolute" style="width:90%;height:90%;top:5%;left:5%;background:#0f2849;mix-blend-mode:screen;opacity:.62;"></div>';
+
+    echo '<div class="container">';
+    echo '<div class="row">';
+    echo '<div class="col-12 text-center pb-5">';
+
+    echo get_sub_field('content_top');
+
+    echo '</div>';
+    echo '</div>';
+
+    // $pages = get_sub_field('pages');
+
+    if(have_rows('columns_repeater')):
+        echo '<div class="row justify-content-center">';
+        $pagesCounter=0;
+        while(have_rows('columns_repeater')): the_row();
+
+        $pagesCounter++;
+        // sprintf("%02d", $pagesCounter)
+
+        echo '<div class="col-lg-4 col-md-6 text-white mb-5 col-services" style="text-decoration:none;">';
+        // echo '<a href="' . get_the_permalink() . '" class="col-lg-4 col-md-6 text-white mb-5 col-services" style="text-decoration:none;">';
+        echo '<div class="position-relative pl-5 pr-5 h-100 col-services-hover" style="padding-top:25px;padding-bottom:25px;">';
+
+        // start of hover box
+        echo '<div class="hover-box bg-accent-dark position-absolute w-100 h-100 z-1 d-flex align-items-center justify-content-center pl-5 pr-5 col-services-hover-content" style="border:6px solid #fbcf02;top:0;left:0;transition:all .25s ease-in-out;">';
+
+        echo '<div>';
+        echo get_sub_field('content_hover');
+        echo '</div>';
+
+        echo '</div>';
+        // end of hover box
+
+        echo '<div class="position-absolute w-100 h-100 bg-accent-quaternary" style="top:0;left:0;mix-blend-mode:overlay;opacity:.28;border:2px solid var(--accent-primary);"></div>';
+
+        echo '<div class="position-relative pb-3 h-100">';
+        echo '<span class="h1 mb-5 d-block coromant-garamond" style="font-size:50px;">' . get_sub_field('title') . '</span>';
+
+        echo '<span class="mb-5 d-block coromant-garamond pl-5 h4" style="">' . get_sub_field('subtitle') . '</span>';
+
+        echo '<div class="d-flex align-items-end">';
+        echo '<div style="height: 35px;
+        width: 35px;
+        border: 1px solid var(--accent-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin-right: 15px;">';
+        echo '<span class="plus-sign">&plus;</span>';
+        echo '</div>';
+
+        echo '<div class="position-relative">';
+        echo '<h6 class="font-italic">More Information</h6>';
+
+        echo '<div class="position-absolute" style="border-bottom:8px solid var(--accent-primary);width:75px;bottom:-15px;left:0;"></div>';
+
+        echo '</div>';
+        echo '</div>';
+
+
+        
+        echo '</div>';
+
+        echo '</div>';
+        echo '</div>'; // end of col
+        // echo '</a>';
+        endwhile;
+            
+            echo '</div>';
+        endif;
+    
+        echo '<div class="row">';
+    echo '<div class="col-12 text-center pb-5">';
+
+    echo get_sub_field('content_bottom');
+
+    echo '</div>';
+    echo '</div>';
+
+    echo '</div>';
+    
+    echo '</section>';
+    endwhile; endif;
+    endwhile; endif;
 
 } elseif($layout == 'Testimonials'){
     if(have_rows('testimonials')): while(have_rows('testimonials')): the_row();
