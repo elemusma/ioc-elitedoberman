@@ -130,7 +130,7 @@ if(have_rows('text_columns')): while(have_rows('text_columns')): the_row();
     }
 
     echo '<div class="container">';
-    echo '<div class="row row-content align-items-center justify-content-center">';
+    echo '<div class="row row-content align-items-center justify-content-lg-between justify-content-center">';
 
     if(have_rows('columns')): while(have_rows('columns')): the_row();
     echo '<div class="col-lg-3 col-md-6 text-center pt-lg-0 pb-lg-0 position-relative" style="padding-top:100px;padding-bottom:100px;">';
@@ -411,12 +411,62 @@ endwhile; endif;
         echo '</div>';
         echo '</section>';
     endwhile; endif;
-} elseif($layout == 'Contact'){
-    if(have_rows('contact')): while(have_rows('contact')): the_row();
-        echo '<section class="position-relative bg-accent-quinary" style="padding-top:500px;padding-bottom:50px;">';
+} elseif($layout == 'Videos'){
+    if(have_rows('videos_group')): while(have_rows('videos_group')): the_row();
+    echo '<section class="position-relative content-section ' . get_sub_field('classes') . '" style="padding:75px 0;' . get_sub_field('style') . '" id="' . get_sub_field('id') . '">';
 
+    $bgImg = get_sub_field('background_image');
+
+    if($bgImg){
+        echo wp_get_attachment_image($bgImg['id'],'full','',[
+            'class'=>'w-100 h-100 position-absolute',
+            'style'=>'top:0;left:0;object-fit:cover;'
+        ]);
+    }
+
+    echo '<div class="container">';
+        echo '<div class="row">';
+            echo '<div class="col-12 text-center pb-5">';
+
+            echo get_sub_field('content');
+
+            echo '</div>';
+        echo '</div>';
+
+        if(have_rows('columns')): 
+            echo '<div class="row">';
+            while(have_rows('columns')): the_row();
+            echo '<div class="col-lg-4 col-md-6 text-center mb-3">';
+            echo get_sub_field('video_code');
+            echo '</div>';
+            endwhile; 
+            echo '</div>';
+        endif;
+
+    echo '</div>';
+
+    echo '</section>';
+    endwhile; endif;
+
+}elseif($layout == 'Contact'){
+    if(have_rows('contact')): while(have_rows('contact')): the_row();
+
+
+        echo '<section class="position-relative bg-accent-quinary contact-section ' . get_sub_field('classes') . '" style="padding-top:500px;padding-bottom:50px;' . get_sub_field('style') . '" id="' . get_sub_field('id') . '">';
+
+        // echo '<img src="https://insideoutcreative.io/wp-content/uploads/2023/02/Old-Paper-Background.jpg" class="w-100 h-100 position-absolute" style="top:0;left:0;object-fit:cover;" alt="">';
+    
         $bgImg = get_sub_field('background_image');
-        echo wp_get_attachment_image($bgImg['id'],'full','',['class'=>'position-absolute w-100 h-100','style'=>'top:0;left:0;object-fit:cover;']);
+    
+        if($bgImg){
+            echo wp_get_attachment_image($bgImg['id'],'full','',[
+                'class'=>'w-100 h-100 position-absolute',
+                'style'=>'top:0;left:0;object-fit:cover;'
+            ]);
+        }
+
+        // $bgImg = get_sub_field('background_image');
+        // echo wp_get_attachment_image($bgImg['id'],'full','',['class'=>'position-absolute w-100 h-100','style'=>'top:0;left:0;object-fit:cover;']);
 
         echo '<div class="container">';
         echo '<div class="row justify-content-center">';

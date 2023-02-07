@@ -14,7 +14,7 @@ echo '<div class="container">';
 
 echo '<div class="row justify-content-center">';
 
-echo '<div class="col-lg-4 col-5 p-5 text-white order-lg-1 order-3">';
+echo '<div class="col-lg-4 col-md-5 p-5 text-white order-lg-1 order-3">';
 
 echo '<div class="h-100 d-flex align-items-end">';
 echo '<div>';
@@ -41,7 +41,7 @@ echo '</div>';
 
 echo '</div>'; // end of col
 
-echo '<div class="col-lg-4 col-6 p-5 order-lg-2 order-1" style="padding-bottom:75px!important;">';
+echo '<div class="col-lg-4 col-md-6 p-5 order-lg-2 order-1" style="padding-bottom:75px!important;">';
 echo '<div class="position-absolute bg-black w-100" style="top:-30px;left:0;height:30px;"></div>';
 echo '<div class="position-absolute bg-black w-100 h-100" style="mix-blend-mode:multiply;top:0;left:0;"></div>';
 
@@ -68,7 +68,7 @@ echo '</a>';
 
 echo '</div>';
 
-echo '<div class="col-lg-4 col-7 p-5 order-lg-3 order-2" style="padding-bottom:0 !important;">';
+echo '<div class="col-lg-4 col-md-7 p-5 order-lg-3 order-2" style="padding-bottom:0 !important;">';
 
 echo '<div class="h-100 d-flex align-items-end">';
 echo '<div>';

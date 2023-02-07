@@ -66,3 +66,12 @@
 }
 
 /* end of process */
+
+/* start of contact */
+@media only screen and (max-width:991px) {
+    .contact-section {
+        padding-top: 150px !important;
+    }
+}
+
+/* end of contact */
