@@ -38,18 +38,18 @@ echo '<div class="nav">';
 echo '<div class="container-fluid">';
 echo '<div class="row align-items-center">';
 
-echo '<div class="col-lg-3 col-6 text-center">';
+echo '<div class="col-lg-3 col-6 text-center order-1">';
 echo '<a href="' . home_url() . '">';
 
 $logo = get_field('logo','options'); 
 if($logo){
-echo wp_get_attachment_image($logo['id'],'full',"",['class'=>'h-auto','style'=>'width:305px;transition:all 1s ease-in-out;','id'=>'logo-main']); 
+echo wp_get_attachment_image($logo['id'],'full',"",['class'=>'h-auto','style'=>'width:305px;transition:all 1s ease-in-out;max-width:100%;','id'=>'logo-main']); 
 }
 
 echo '</a>';
 echo '</div>';
 
-echo '<div class="col-6 text-center">';
+echo '<div class="col-6 text-center order-2 mobile-hidden">';
 
 wp_nav_menu(array(
     'menu' => 'primary',
@@ -58,7 +58,7 @@ wp_nav_menu(array(
 
 echo '</div>';
 
-echo '<div class="col-lg-3 text-center">';
+echo '<div class="col-lg-3 text-center order-4 mobile-hidden">';
 
 wp_nav_menu(array(
     'menu' => 'Contact',
@@ -68,7 +68,7 @@ wp_nav_menu(array(
 echo '</div>';
 
 
-echo '<div class="col-lg-4 col-6 desktop-hidden">';
+echo '<div class="col-lg-4 col-6 desktop-hidden order-3">';
 echo '<a id="navToggle" class="nav-toggle">';
 echo '<div>';
 echo '<div class="line-1 bg-accent"></div>';
@@ -78,14 +78,15 @@ echo '</div>';
 echo '</a>';
 echo '</div>';
 echo '<div id="navMenuOverlay" class="position-fixed z-2"></div>';
-echo '<div class="col-lg-4 col-md-8 col-11 nav-items bg-white desktop-hidden" id="navItems">';
+echo '<div class="col-lg-4 col-md-8 col-11 nav-items bg-accent-quaternary desktop-hidden" id="navItems">';
 
 echo '<div class="pt-5 pb-5">';
 echo '<div class="close-menu">';
 echo '<div>';
-echo '<span id="navMenuClose" class="close h1">X</span>';
+echo '<span id="navMenuClose" class="close h1 text-white">X</span>';
 echo '</div>';
 echo '</div>';
+
 echo '<a href="' . home_url() . '">';
 
 $logo = get_field('logo','options'); 
@@ -94,11 +95,19 @@ echo wp_get_attachment_image($logo['id'],'full',"",['class'=>'w-100 h-auto','sty
 }
 
 echo '</a>';
+
 echo '</div>';
+
 wp_nav_menu(array(
 'menu' => 'primary',
-'menu_class'=>'menu d-flex flex-wrap list-unstyled justify-content-center mb-0'
+'menu_class'=>'menu list-unstyled mb-0'
 )); 
+
+wp_nav_menu(array(
+    'menu' => 'Contact',
+    'menu_class'=>'menu list-unstyled mb-0'
+)); 
+
 echo '</div>';
 echo '</div>';
 echo '</div>';

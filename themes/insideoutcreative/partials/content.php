@@ -37,7 +37,7 @@ echo '<div class="container-fluid">';
     $columnsRepeater++;
 
 
-        echo '<div class="col-lg-4 col-md-6 p-0 text-center bg-accent">';
+        echo '<div class="col-lg-4 col-md-6 p-0 text-center bg-accent col-intro-boxes">';
 
         echo '<div class="pt-3 pb-3 pl-2 pr-2">';
         echo '<span class="h2 font-italic text-white bold" style="text-decoration:underline;">' . get_sub_field('title') . '</span>';
@@ -52,7 +52,7 @@ echo '<div class="container-fluid">';
         }
 
             // echo '<a href="' . wp_get_attachment_image_url($img['id'], 'full') . '" data-lightbox="intro-img-set" data-title="' . $img['title'] . '">';
-            echo wp_get_attachment_image($img['id'],'full','',['class'=>'w-100','style'=>'height:250px;']);
+            echo wp_get_attachment_image($img['id'],'full','',['class'=>'w-100 img-intro-boxes','style'=>'height:250px;object-fit:cover']);
             // echo '</a>';
             echo '</div>';
         echo '</div>';
@@ -130,7 +130,7 @@ if(have_rows('text_columns')): while(have_rows('text_columns')): the_row();
     }
 
     echo '<div class="container">';
-    echo '<div class="row row-content align-items-center justify-content-between">';
+    echo '<div class="row row-content align-items-center justify-content-center">';
 
     if(have_rows('columns')): while(have_rows('columns')): the_row();
     echo '<div class="col-lg-3 col-md-6 text-center pt-lg-0 pb-lg-0 position-relative" style="padding-top:100px;padding-bottom:100px;">';
@@ -205,7 +205,7 @@ if(have_rows('text_columns')): while(have_rows('text_columns')): the_row();
         echo '<div class="row row-content justify-content-center">';
             while(have_rows('icons_inner')): the_row();
             $icon = get_sub_field('icon');
-            echo '<div class="col-lg-4 col-6 text-center mb-5">';
+            echo '<div class="col-md-4 col-6 text-center mb-5">';
             echo '<div class="border-hover d-flex align-items-center justify-content-center ml-auto mr-auto mb-4" style="border-radius:50%;height:105px;width:105px;border:1px solid var(--accent-primary);">';
             echo wp_get_attachment_image($icon['id'],'full','',['class'=>'','style'=>'height:70px;width:70px;object-fit:contain;']);
             echo '</div>';
@@ -246,7 +246,7 @@ echo '<div class="container">';
         $gallery = get_sub_field('gallery');
     if( $gallery ): 
         foreach( $gallery as $image ):
-        echo '<div class="col-lg-3 col-md-4 col-6 col col-portfolio mt-3 mb-3 overflow-h">';
+        echo '<div class="col-lg-3 col-md-6 col-portfolio mt-3 mb-3 overflow-h">';
         echo '<div class="img-hover overflow-h">';
         echo '<a href="' . wp_get_attachment_image_url($image['id'], 'full') . '" data-lightbox="image-set">';
         echo wp_get_attachment_image($image['id'], 'full','',['class'=>'w-100 img-portfolio','style'=>'height:300px;object-fit:cover;'] );

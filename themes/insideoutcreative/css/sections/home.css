@@ -1,3 +1,30 @@
+/* start of intro  */
+@media only screen and (max-width:767px) {
+    .img-intro-boxes {
+        height: 190px !important;
+    }
+}
+
+@media only screen and (max-width:991px) {
+    .col-intro-boxes:last-child {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* end of intro  */
+
+/* start of text columns */
+@media only screen and (max-width:991px) {
+    .text-columns-big-title {
+        transform: translate(-50%, 50%) !important;
+    }
+}
+
+/* end of text columns */
+
 /* start of icons */
 .border-hover {
     transition: all .25s ease-in-out;
