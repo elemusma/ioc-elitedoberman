@@ -1,6 +1,6 @@
 <?php
 
-function rais_stylesheets() {
+function elite_doberman_stylesheets() {
 wp_enqueue_style('style', get_stylesheet_uri() );
 
 wp_enqueue_style('bootstrap', get_theme_file_uri('/css/bootstrap.min.css'));
@@ -38,9 +38,9 @@ wp_enqueue_style('aspira', get_theme_file_uri('/aspira-font/aspira-font.css'));
 wp_enqueue_style('coromant-garamond', '//use.typekit.net/jsh8aeu.css');
 
 }
-add_action('wp_enqueue_scripts', 'rais_stylesheets');
+add_action('wp_enqueue_scripts', 'elite_doberman_stylesheets');
 // for footer
-function rais_stylesheets_footer() {
+function elite_doberman_stylesheets_footer() {
 	// wp_enqueue_style('style-footer', get_theme_file_uri('/css/style-footer.css'));
 	// owl carousel
 	wp_enqueue_style('owl.carousel.min', get_theme_file_uri('/owl-carousel/owl.carousel.min.css'));
@@ -76,7 +76,7 @@ function rais_stylesheets_footer() {
 		}
 	}
 	
-add_action('get_footer', 'rais_stylesheets_footer');
+add_action('get_footer', 'elite_doberman_stylesheets_footer');
 
 // loads enqueued javascript files deferred
 function mind_defer_scripts( $tag, $handle, $src ) {
@@ -100,7 +100,7 @@ function mind_defer_scripts( $tag, $handle, $src ) {
   } 
   add_filter( 'script_loader_tag', 'mind_defer_scripts', 10, 3 );
 
-function rais_menus() {
+function elite_doberman_menus() {
  register_nav_menus( array(
    'primary' => __( 'Primary' )));
 register_nav_menus( array(
@@ -110,7 +110,7 @@ register_nav_menus( array(
  add_theme_support('post-thumbnails');
 }
 
-add_action('after_setup_theme', 'rais_menus');
+add_action('after_setup_theme', 'elite_doberman_menus');
 
 if( function_exists('acf_add_options_page') ) {
 
@@ -185,7 +185,7 @@ function btn_shortcode( $atts, $content = null ) {
 
 	$button .= '<a class="btn-main d-inline-block ls-2 small pt-1 pb-1 pl-2 pr-2 ' . esc_attr($a['class']) . '" href="' . esc_attr($a['href']) . '" style="transition:all .25s ease-in-out;border:1px solid var(--accent-quaternary);' . esc_attr($a['style']) . '" target="' . esc_attr($a['target']) . '">';
 
-	$button .= '<span class="pt-1 pb-1 pl-5 pr-5 d-inline-block bg-accent-light text-accent-quaternary" style="border:1px solid var(--accent-quaternary);">';
+	$button .= '<span class="pt-1 pb-1 pl-5 pr-5 d-inline-block bg-accent-light text-accent-quaternary test" style="border:1px solid var(--accent-quaternary);">';
 	$button .= $content;
 	$button .= '</span>';
 	$button .= '</a>';
