@@ -11,7 +11,7 @@ section.hero {
     display: none;
 }
 </style>
-<section class="pt-5 pb-5 position-relative" style="overflow:hidden;">
+<section class="pb-5 position-relative" style="overflow:hidden;padding-top:250px;">
 <?php if(has_post_thumbnail()){
     the_post_thumbnail('full',array('class'=>'bg-img position-absolute w-100 h-100'));
 } else { 
