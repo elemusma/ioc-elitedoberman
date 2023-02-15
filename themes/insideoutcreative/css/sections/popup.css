@@ -10,6 +10,7 @@
   transition: all 0.25s ease-in-out;
   pointer-events: none;
   background: transparent;
+  z-index: 10;
 }
 
 .modal-content.activate-modal {
@@ -28,7 +29,7 @@
 
 .bg-content {
   width: 95%;
-  background: white;
+  /* background: white; */
   position: relative;
   margin: auto;
   padding: 50px 25px;

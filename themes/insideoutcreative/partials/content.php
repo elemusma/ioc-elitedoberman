@@ -107,6 +107,78 @@ endwhile; endif;
         echo '</div>';
 
         echo '</div>';
+
+        if(have_rows('buttons_with_popups')):
+            echo '<div class="row position-relative pt-5">';
+            while(have_rows('buttons_with_popups')): the_row();
+
+            $link = get_sub_field('button');
+            
+            if( $link ): 
+                $link_url = $link['url'];
+                $link_title = $link['title'];
+                $link_target = $link['target'] ? $link['target'] : '_self';
+                
+                
+                $sanitizedID = sanitize_title_with_dashes($link_title);
+                
+            echo '<div class="col-md-4 text-center">';
+            if($link_url == '#'){
+                echo '<span class="btn-main d-inline-block ls-2 small pt-1 pb-1 pl-2 pr-2 ' . $sanitizedID . ' open-modal" style="transition:all .25s ease-in-out;border:1px solid var(--accent-quaternary);" id="' . $sanitizedID . '" href="' . esc_url( $link_url ) . '" target="' . esc_attr( $link_target ) . '">
+                <span class="pt-1 pb-1 pl-5 pr-5 d-inline-block bg-accent-light text-accent-quaternary test" style="border:1px solid var(--accent-quaternary);">' . esc_html( $link_title ) . '</span></span>';
+            } else {
+                echo '<a class="btn-main d-inline-block ls-2 small pt-1 pb-1 pl-2 pr-2" style="transition:all .25s ease-in-out;border:1px solid var(--accent-quaternary);" href="' . esc_url( $link_url ) . '" target="' . esc_attr( $link_target ) . '">
+                <span class="pt-1 pb-1 pl-5 pr-5 d-inline-block bg-accent-light text-accent-quaternary test" style="border:1px solid var(--accent-quaternary);">' . esc_html( $link_title ) . '</span></a>';
+            }
+            echo '</div>';
+
+            echo '<div class="modal-content ' . $sanitizedID . ' position-fixed w-100 h-100">';
+
+            echo wp_get_attachment_image(160,'full','',['class'=>'w-100 h-100 position-absolute','style'=>'top:0;left:0;object-fit:cover;']);
+
+            // echo '<div class="bg-overlay"></div>';
+            echo '<div class="bg-content">';
+            echo '<div class="bg-content-inner">';
+            echo '<div class="close" id="">X</div>';
+            echo '<div>';
+
+            echo '<div class="row align-items-center">';
+                echo '<div class="col-lg-5">';
+                echo get_sub_field('content');
+                echo '</div>';
+
+                echo '<div class="col-lg-7">';
+                $gallery = get_sub_field('gallery');
+                if( $gallery ): 
+                    echo '<div class="row">';
+                    foreach( $gallery as $image ):
+                        echo '<div class="col-md-6 mt-3 mb-3 overflow-h">';
+                        echo '<div class="position-relative">';
+                        echo '<a href="' . wp_get_attachment_image_url($image['id'], 'full') . '" data-lightbox="image-set-' . $sanitizedID . '" data-title="' . $image['title'] . '">';
+                        echo wp_get_attachment_image($image['id'], 'full','',['class'=>'w-100','style'=>'height:250px;object-fit:cover;'] );
+                        echo '</a>';
+                        echo '</div>';
+                        echo '</div>';
+                    endforeach; 
+                    echo '</div>';
+                endif;
+                
+                echo '</div>';
+
+            echo '</div>';
+
+            echo '</div>';
+            echo '</div>';
+
+            echo '</div>';
+            echo '</div>';
+
+            endif;
+            
+            endwhile;
+            echo '</div>';
+        endif;
+
         echo '</div>';
 
         echo '</section>';
