@@ -150,7 +150,12 @@ endwhile; endif;
                 echo get_sub_field('content');
                 echo '</div>';
 
-                echo '<div class="col-lg-7">';
+                if(!get_sub_field('content')){
+                    echo '<div class="col-12">';
+                    // echo '</div>';
+                } else {
+                    echo '<div class="col-lg-7">';
+                }
                 $gallery = get_sub_field('gallery');
                 if( $gallery ): 
                     echo '<div class="row">';
