@@ -125,11 +125,11 @@ endwhile; endif;
                 $sanitizedID = sanitize_title_with_dashes($link_title);
                 
                 if($link_url == '#'){
-            echo '<a class="col-md-4 text-center bg-accent text-white p-5 bold font-italic text-uppercase mt-2 mb-2 ' . $sanitizedID . ' open-modal" id="' . $sanitizedID . '" style="text-decoration:underline;transition:all .25s ease-in-out;" target="' . esc_attr( $link_target ) . '">' . esc_html( $link_title ) . '</a>';
+            echo '<a class="col-md-4 text-center bg-accent text-white p-5 bold font-italic text-uppercase mt-2 mb-2 h2 ' . $sanitizedID . ' open-modal" id="' . $sanitizedID . '" style="text-decoration:underline;transition:all .25s ease-in-out;" target="' . esc_attr( $link_target ) . '">' . esc_html( $link_title ) . '</a>';
                 // echo '<span class="btn-main d-inline-block ls-2 small pt-1 pb-1 pl-2 pr-2 ' . $sanitizedID . ' open-modal" style="transition:all .25s ease-in-out;border:1px solid var(--accent-quaternary);" id="' . $sanitizedID . '" href="' . esc_url( $link_url ) . '" target="' . esc_attr( $link_target ) . '">
                 // <span class="pt-1 pb-1 pl-5 pr-5 d-inline-block bg-accent-light text-accent-quaternary test" style="border:1px solid var(--accent-quaternary);">' . esc_html( $link_title ) . '</span></span>';
             } else {
-                echo '<a class="col-md-4 text-center bg-accent text-white p-5 bold font-italic text-uppercase" id="" target="' . esc_attr( $link_target ) . '">' . esc_html( $link_title ) . '</a>';
+                echo '<a class="col-md-4 text-center bg-accent text-white p-5 bold font-italic text-uppercase mt-2 mb-2 h2" id="" target="' . esc_attr( $link_target ) . '">' . esc_html( $link_title ) . '</a>';
                 // echo '<a class="btn-main d-inline-block ls-2 small pt-1 pb-1 pl-2 pr-2" style="transition:all .25s ease-in-out;border:1px solid var(--accent-quaternary);" href="' . esc_url( $link_url ) . '" target="' . esc_attr( $link_target ) . '">
                 // <span class="pt-1 pb-1 pl-5 pr-5 d-inline-block bg-accent-light text-accent-quaternary test" style="border:1px solid var(--accent-quaternary);">' . esc_html( $link_title ) . '</span></a>';
             }
