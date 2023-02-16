@@ -158,15 +158,25 @@ endwhile; endif;
                 }
                 $gallery = get_sub_field('gallery');
                 if( $gallery ): 
-                    echo '<div class="row">';
+                    $galleryCounter = 0;
+                    echo '<div class="d-flex flex-wrap">';
                     foreach( $gallery as $image ):
-                        echo '<div class="col-md-6 mt-3 mb-3 overflow-h">';
-                        echo '<div class="position-relative">';
-                        echo '<a href="' . wp_get_attachment_image_url($image['id'], 'full') . '" data-lightbox="image-set-' . $sanitizedID . '" data-title="' . $image['title'] . '">';
+                        $galleryCounter++;
+
+                        if($galleryCounter != 1){
+                            echo '<div class="h-100" style="width:5px;"></div>';
+                        }
+
+                        // echo '<div class="col-md-6 mt-3 mb-3 overflow-h">';
+                        // echo '<div class="position-relative">';
+                        echo '<a class="mb-2" href="' . wp_get_attachment_image_url($image['id'], 'full') . '" data-lightbox="image-set-' . $sanitizedID . '" data-title="' . $image['title'] . '">';
+
+                        
+
                         echo wp_get_attachment_image($image['id'], 'full','',['class'=>'w-100','style'=>'height:250px;object-fit:cover;'] );
                         echo '</a>';
-                        echo '</div>';
-                        echo '</div>';
+                        // echo '</div>';
+                        // echo '</div>';
                     endforeach; 
                     echo '</div>';
                 endif;
