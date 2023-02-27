@@ -20,6 +20,9 @@ wp_head();
 <body <?php body_class(); ?>>
 <?php
 if(get_field('body','options')) { the_field('body','options'); }
+
+
+
 echo '<div class="blank-space position-fixed w-100 z-9" style="top:0;left:0;background:#363636;mix-blend-mode:multiply;opacity:.55;"></div>';
 echo '<div class="bg-clip-path position-fixed w-25 z-9" style="
 background:#c19b30;
@@ -32,7 +35,19 @@ clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
 -moz-clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
 -o-clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
 "></div>';
-echo '<header class="position-fixed pt-3 pb-3 z-10 w-100" style="top:0;left:0;">';
+echo '<header class="position-fixed pb-3 z-10 w-100" style="top:0;left:0;">';
+
+if(get_field('secondary_navigation','options')){
+    echo '<div class="secondary-nav bg-light" style="padding-top:1rem;">';
+    echo '<div class="container">';
+        echo '<div class="row">';
+            echo '<div class="col-12 text-center">';
+            echo get_field('secondary_navigation','options');
+            echo '</div>';
+        echo '</div>';
+    echo '</div>';
+    echo '</div>';
+}
 
 echo '<div class="nav">';
 echo '<div class="container-fluid">';
